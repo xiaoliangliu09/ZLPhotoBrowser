@@ -28,7 +28,7 @@ import UIKit
 import Photos
 
 class ZLThumbnailPhotoCell: UICollectionViewCell {
-    private let selectBtnWH: CGFloat = 17
+    private let selectBtnWH: CGFloat = 24
     
     private lazy var containerView = UIView()
     
