@@ -590,7 +590,7 @@ class ZLVideoPreviewCell: ZLPreviewBaseCell {
     
     deinit {
         cancelDownloadVideo()
-        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+//        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
         zl_debugPrint("ZLVideoPreviewCell deinit")
     }
     
@@ -730,8 +730,9 @@ class ZLVideoPreviewCell: ZLPreviewBaseCell {
                 }
             }
             imageView.isHidden = true
-            try? AVAudioSession.sharedInstance().setCategory(.playback)
-            try? AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+//            try? AVAudioSession.sharedInstance().setCategory(.playback)
+//            try? AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+            try? AVAudioSession.sharedInstance().setCategory(.playback, options: [.mixWithOthers])
             player?.play()
             playBtn.setImage(nil, for: .normal)
             singleTapBlock?()
@@ -757,9 +758,9 @@ class ZLVideoPreviewCell: ZLPreviewBaseCell {
         guard isPlaying || ignorePlayStatus else { return }
         
         player?.pause()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//            try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+//        }
         
         if seekToZero {
             player?.seek(to: .zero)
